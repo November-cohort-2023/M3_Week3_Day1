@@ -23,6 +23,9 @@ function CreateRecipePage() {
         .then((newRecipe)=>{
             console.log(newRecipe.data)
         })
+        .catch(err=>{
+            console.log(err)
+        })
     }
 
     /* 
@@ -49,6 +52,11 @@ function CreateRecipePage() {
                 <input type="number" onChange={(e)=>{setDuration(e.target.value)}} />
             </label>
 
+            <select >
+                <option value="super Easy">super Easy</option>
+                <option value="UltraPro Chef">UltraPro Chef</option>
+                <option value=""></option>
+            </select>
             <button>Submit</button>
         </form>
 
