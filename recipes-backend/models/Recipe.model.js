@@ -20,7 +20,7 @@ const recipeSchema = new mongoose.Schema({
     },
     duration:{
         type:Number,
-        min:0
+        min:[0,"NEEDS TO BE MORE THAN 0"]
     }
 })
 
