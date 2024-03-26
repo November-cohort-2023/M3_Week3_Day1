@@ -42,7 +42,7 @@ router.post('/recipes',(req,res)=>{
     console.log(req.body)
     Recipe.create(req.body)
     .then((createdRecipe)=>{
-        res.json(createdRecipe)
+        res.json("Successfully created new Recipe")
     })
     .catch(err=>{
         console.log(err)

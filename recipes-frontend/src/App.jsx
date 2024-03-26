@@ -1,5 +1,6 @@
 
 import './App.css'
+import CreateRecipePage from './pages/CreateRecipePage'
 import RecipeDetails from './pages/RecipeDetails'
 import RecipesPage from './pages/RecipesPage'
 
@@ -13,6 +14,7 @@ function App() {
     <Routes>
       <Route path='/' element={<RecipesPage/>}/>
       <Route path='/:recipeId' element={<RecipeDetails/>}/>
+      <Route path='/create' element={<CreateRecipePage/>}/>
     </Routes>
     </>
   )
