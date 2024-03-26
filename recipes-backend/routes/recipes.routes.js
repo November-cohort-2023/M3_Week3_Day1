@@ -16,7 +16,6 @@ router.get('/recipes',(req,res)=>{
     .catch(err=>{
         console.log(err)
         res.json(err)
-
     })
 })
 
@@ -24,7 +23,7 @@ router.get('/recipes/:id',(req,res)=>{
 
     console.log(req.params)
 
-    Recipe.findById(req.params)
+    Recipe.findById(req.params.id)
     .then((foundRecipe)=>{
         res.json(foundRecipe)
     })
@@ -53,6 +52,30 @@ router.post('/recipes',(req,res)=>{
 })
 
 
+
+router.put('/recipes/:id',(req,res)=>{
+
+    Recipe.findByIdAndUpdate(req.params.id,req.body,{new:true})
+    .then((updatedRecipe)=>{
+        res.json(updatedRecipe)
+    })
+    .catch(err=>{
+        console.log(err)
+        res.json(err)
+
+    })
+
+})
+
+
+
+router.delete('/recipes/:id',(req,res)=>{
+
+    Recipe.findByIdAndDelete(req.params.id)
+    .then((deletedRecipe)=>{
+        res.json(deletedRecipe)
+    })
+})
 
 
 
