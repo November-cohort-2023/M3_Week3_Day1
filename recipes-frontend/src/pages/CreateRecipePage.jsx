@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 
 import axios from 'axios'
 
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function CreateRecipePage() {
 
@@ -75,6 +75,7 @@ function CreateRecipePage() {
                     )
                 })}
             </select>
+            <Link to='/chef/create'><button>Dont See Desired Chef? Create New Chef</button></Link>
             <label>
                 Instructions:
                 <input type="text" onChange={(e)=>{setInstructions(e.target.value)}} />
