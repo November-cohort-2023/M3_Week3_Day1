@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 
 const recipeSchema = new mongoose.Schema({
     title:{
-        type:Boolean,
+        type:String,
         required:true,
         unique:true
     },
@@ -21,6 +21,9 @@ const recipeSchema = new mongoose.Schema({
     duration:{
         type:Number,
         min:[0,"NEEDS TO BE MORE THAN 0"]
+    },
+    chef:{
+        type:String
     }
 })
 

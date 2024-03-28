@@ -25,6 +25,7 @@ function RecipesPage() {
                 <div key={oneRecipe._id}>
                     <Link to={`/${oneRecipe._id}`}>
                     <h1>{oneRecipe.title}</h1>
+                   <Link to={`${oneRecipe._id}/edit`}><button>Edit Recipe</button></Link> 
                     </Link>
                 </div>
             )

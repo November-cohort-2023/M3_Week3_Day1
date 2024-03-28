@@ -1,59 +1,22 @@
+import React from 'react'
+
 import {useState} from 'react'
 
 import axios from 'axios'
 
 import { useNavigate } from 'react-router-dom'
 
-function CreateRecipePage() {
-
+function UpdateRecipePage() {
+    
     const [title,setTitle] = useState('')
     const [instructions,setInstructions] = useState('')
     const [duration,setDuration] = useState(0)
     const [level,setLevel] = useState('Easy Peasy')
     const [chef,setChef] = useState('')
     const [error, setError] = useState()
-
-    const navigate = useNavigate()
-    function handleSubmit(e){
-        e.preventDefault()
-
-        if( title && instructions && duration && level && chef ){
-            let newRecipe = {
-                title:title,
-                instructions:instructions,
-                duration:duration,
-                level:level,
-                chef:chef
-            }
-    
-    
-            axios.post(`http://localhost:5005/api/recipes`,newRecipe)
-            .then((newRecipe)=>{
-                console.log(newRecipe.data)
-                navigate('/')
-            })
-            .catch(err=>{
-                console.log(err)
-            })
-        }
-        else{
-            setError("Please Fill in all required fields")
-        }
-
-      
-    }
-
-    /* 
-    1. create a state for each input
-
-    2. prevent the default behavior of submitting a form
-
-    3.
-    */
   return (
     <div>
-
-        <form onSubmit={handleSubmit}>
+         <form onSubmit={handleSubmit}>
             <label>
                 Title:
                 <input minLength={1} required type="text" onChange={(e)=>{setTitle(e.target.value)}} />
@@ -86,4 +49,4 @@ function CreateRecipePage() {
   )
 }
 
-export default CreateRecipePage
+export default UpdateRecipePage
