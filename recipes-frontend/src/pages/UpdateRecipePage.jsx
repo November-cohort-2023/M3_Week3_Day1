@@ -29,6 +29,7 @@ function UpdateRecipePage() {
             level,
             chef
         }
+
         axios.put(`http://localhost:5005/api/recipes/${recipeId}`,editedRecipe)
         .then((updatedRecipe)=>{
             console.log(updatedRecipe.data)

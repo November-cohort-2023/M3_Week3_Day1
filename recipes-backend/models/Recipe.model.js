@@ -23,7 +23,8 @@ const recipeSchema = new mongoose.Schema({
         min:[0,"NEEDS TO BE MORE THAN 0"]
     },
     chef:{
-        type:String
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"Chef"
     }
 })
 

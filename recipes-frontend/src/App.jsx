@@ -6,6 +6,7 @@ import RecipesPage from './pages/RecipesPage'
 
 import {Routes,Route} from 'react-router-dom'
 import UpdateRecipePage from './pages/UpdateRecipePage'
+import CreateChef from './pages/chef/CreateChef'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
       <Route path='/:recipeId' element={<RecipeDetails/>}/>
       <Route path='/create' element={<CreateRecipePage/>}/>
       <Route path='/:recipeId/edit' element={<UpdateRecipePage/>}/>
+      <Route path='/chef/create' element={<CreateChef/>}/>
     </Routes>
     </>
   )

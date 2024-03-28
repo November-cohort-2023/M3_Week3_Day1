@@ -9,6 +9,7 @@ const router = require('express').Router()
 router.get('/recipes',(req,res)=>{
     
     Recipe.find()
+    .populate('chef')
     .then((allRecipes)=>{
         console.log(allRecipes)
         res.json(allRecipes)
