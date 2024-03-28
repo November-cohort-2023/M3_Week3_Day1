@@ -19,7 +19,29 @@ function UpdateRecipePage() {
 
     function handleSubmit(e){
         e.preventDefault()
+
+        if( title && instructions && duration && level && chef ){
+        let editedRecipe = {
+
+            title,
+            instructions,
+            duration,
+            level,
+            chef
+        }
+        axios.put(`http://localhost:5005/api/recipes/${recipeId}`,editedRecipe)
+        .then((updatedRecipe)=>{
+            console.log(updatedRecipe.data)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+        
     }
+    else{
+        setError("Please Fill in all required fields")
+    }
+}
 
     useEffect(() => {
         axios.get(`http://localhost:5005/api/recipes/${recipeId}`)
@@ -34,6 +56,7 @@ function UpdateRecipePage() {
         })  
     }, [])
     
+
   return (
     <div>
          <form onSubmit={handleSubmit}>
