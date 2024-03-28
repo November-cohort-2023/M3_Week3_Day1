@@ -17,6 +17,16 @@ router.post('/chefs',(req,res)=>{
 })
 
 
+router.get('/chefs',(req,res)=>{
+
+    Chef.find()
+    .then((allChefs)=>{
+        res.json(allChefs)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+})
 
 
 

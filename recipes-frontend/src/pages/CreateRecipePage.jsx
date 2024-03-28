@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
 import axios from 'axios'
 
@@ -10,8 +10,10 @@ function CreateRecipePage() {
     const [instructions,setInstructions] = useState('')
     const [duration,setDuration] = useState(0)
     const [level,setLevel] = useState('Easy Peasy')
-    const [chef,setChef] = useState('')
-    const [error, setError] = useState()
+    const [chef,setChef] = useState([])
+    const [error, setError] = useState('')
+    const [selectedChef,setSelectedChef] = useState('')
+
 
     const navigate = useNavigate()
     function handleSubmit(e){
@@ -23,7 +25,7 @@ function CreateRecipePage() {
                 instructions:instructions,
                 duration:duration,
                 level:level,
-                chef:chef
+                chef:selectedChef
             }
     
     
@@ -44,7 +46,13 @@ function CreateRecipePage() {
     }
 
     
-
+    useEffect(()=>{
+        axios.get(`http://localhost:5005/api/chefs`)
+        .then((response)=>{
+            setChef(response.data)
+            console.log(response.data)
+        })
+    },[])
     /* 
     1. create a state for each input
 
@@ -60,10 +68,13 @@ function CreateRecipePage() {
                 Title:
                 <input minLength={1} required type="text" onChange={(e)=>{setTitle(e.target.value)}} />
             </label>
-            <label>
-                Chef:
-                <input type="text" onChange={(e)=>{setChef(e.target.value)}} />
-            </label>
+            <select onChange={(e)=>{setSelectedChef(e.target.value)}}>
+                {chef.map((oneChef)=>{
+                    return(
+                        <option key={oneChef._id} value={oneChef._id}>{oneChef.name}</option>
+                    )
+                })}
+            </select>
             <label>
                 Instructions:
                 <input type="text" onChange={(e)=>{setInstructions(e.target.value)}} />
