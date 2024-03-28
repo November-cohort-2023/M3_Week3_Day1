@@ -9,7 +9,7 @@ function CreateRecipePage() {
     const [title,setTitle] = useState('')
     const [instructions,setInstructions] = useState('')
     const [duration,setDuration] = useState(0)
-    const [level,setLevel] = useState('Easy Peasy')
+    const [level,setLevel] = useState('')
     const [chef,setChef] = useState([])
     const [error, setError] = useState('')
     const [selectedChef,setSelectedChef] = useState('')
@@ -87,6 +87,7 @@ function CreateRecipePage() {
        
 
             <select onChange={(e)=>{setLevel(e.target.value)}}>
+                <option value="">Select Chef</option>
                 <option value="Easy Peasy">Easy Peasy</option>
                 <option value="Amateur Chef">Amateur Chef</option>
                 <option value="UltraPro Chef">UltraPro Chef</option>

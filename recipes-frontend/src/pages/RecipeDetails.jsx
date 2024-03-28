@@ -41,7 +41,7 @@ function RecipeDetails() {
         {recipe && (
             <div>
                 <h1>{recipe.title}</h1> 
-                <p>{recipe.chef}</p>
+                <p>{recipe.chef.name}</p>
                 <button onClick={()=>{deleteRecipe(recipe._id)}} >Delete Recipe</button>
             </div>
         )}

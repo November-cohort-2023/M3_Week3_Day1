@@ -25,7 +25,7 @@ function RecipesPage() {
                 <div key={oneRecipe._id}>
                     <Link to={`/${oneRecipe._id}`}>
                     <h1>{oneRecipe.title}</h1>
-                    <p>{JSON.stringify(oneRecipe.chef)}</p>
+                    <p>{oneRecipe.chef.name}</p>
                    <Link to={`${oneRecipe._id}/edit`}><button>Edit Recipe</button></Link> 
                     </Link>
                 </div>

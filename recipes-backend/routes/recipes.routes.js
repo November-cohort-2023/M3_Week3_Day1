@@ -25,6 +25,7 @@ router.get('/recipes/:id',(req,res)=>{
     console.log(req.params)
 
     Recipe.findById(req.params.id)
+    .populate('chef')
     .then((foundRecipe)=>{
         res.json(foundRecipe)
     })
@@ -46,7 +47,10 @@ router.post('/recipes',(req,res)=>{
         res.json("Successfully created new Recipe")
     })
     .catch(err=>{
-        console.log(err)
+        
+        if(err.errors.duration.name === "ValidatorError"){
+            res.json({erorrsMessage:err.errors.duration.message})
+        }
         res.json(err)
 
     })
